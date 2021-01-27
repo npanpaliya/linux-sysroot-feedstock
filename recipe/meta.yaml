@@ -41,8 +41,8 @@ source:
 
   - folder: binary-tzdata
     no_hoist: True
-    url: http://mirror.centos.org/centos/7.8.2003/os/x86_64/Packages/tzdata-2019c-1.el7.noarch.rpm
-    sha256: a467bd14a5f0fec9e6227eae6aac92c155947a102e818c2bb62e2339e44a694a
+    url: http://mirror.centos.org/centos/7.9.2009/os/x86_64/Packages/tzdata-2020a-1.el7.noarch.rpm
+    sha256: bc5c790c0a346bb20abbbd866e0c1cf664cec9c3e4d4e21dbfe32b32616257ba
 
   - folder: binary-glibc-headers
     no_hoist: True
