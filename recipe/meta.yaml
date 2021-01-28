@@ -1,4 +1,4 @@
-{% set use_amazonlinux = 'no' %}
+{% set use_amazon_linux = 'no' %}
 
 {% if use_amazon_linux == 'yes' %}
 {% set version = "2.36" %}. # [cross_target_platform == "linux-aarch64"]
