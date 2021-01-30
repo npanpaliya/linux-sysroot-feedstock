@@ -4,22 +4,17 @@
 {% set distro = "amzn2" %}
 {% set version = "2.26" %}
 {% set version2 = "2.26-39" %}
+{% set kernel_headers_version = "4.14.214" %}
+{% set kernel_headers_version2 = "4.14.214-160.339" %}
 {% else %}
 {% set distro = "el7" %}
 {% set version = "2.17" %}
 {% set version2 = "2.17-317" %}
-{% endif %}
-
-{% if use_amazon_linux == "yes" %}
-{% set kernel_headers_version = "4.14.214" %}
-{% set kernel_headers_version2 = "4.14.214-160.339" %}
-{% else %}
 {% set kernel_headers_version = "4.18.0" %}
 {% set kernel_headers_version2 = "4.18.0-1160" %}  # [cross_target_platform == "linux-64" or cross_target_platform == "linux-ppc64le"]
 {% set kernel_headers_version2 = "4.18.0-193.28.1" %}  # [cross_target_platform == "linux-aarch64"]
 {% set kernel_headers_version2 = "4.18.0-1127" %}  # [cross_target_platform == "linux-s390x"]
 {% endif %}
-{% set kernel_headers_version = "3.10.0" %}  # [cross_target_platform != "linux-aarch64"]
 
 {% set build_number = "11" %}
 {% set rpm_url = "http://mirror.centos.org/centos/7.9.2009/os/x86_64/Packages" %}  # [cross_target_platform == "linux-64"]
