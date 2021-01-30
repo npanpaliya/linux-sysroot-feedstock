@@ -9,7 +9,8 @@
 {% else %}
 {% set distro = "el7" %}
 {% set version = "2.17" %}
-{% set version2 = "2.17-317" %}
+{% set version2 = "2.17-317" %}  # [cross_target_platform != "linux-s390x"]
+{% set version2 = "2.17-307" %}  # [cross_target_platform == "linux-s390x"]
 {% set kernel_headers_version = "4.18.0" %}
 {% set kernel_headers_version2 = "4.18.0-1160" %}  # [cross_target_platform == "linux-64" or cross_target_platform == "linux-ppc64le"]
 {% set kernel_headers_version2 = "4.18.0-193.28.1" %}  # [cross_target_platform == "linux-aarch64"]
