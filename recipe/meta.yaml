@@ -9,8 +9,8 @@
 {% else %}
 {% set distro = "el7" %}
 {% set version = "2.17" %}
-{% set version2 = "2.17-317" %}  # [cross_target_platform == "linux-aarch64"]
-{% set version2 = "2.17-307" %}  # [cross_target_platform != "linux-aarch64"]
+{% set version2 = "2.17-307" %}
+{% set version2 = "2.17-317" %}  # [cross_target_platform == "linux-aarch64" or cross_target_platform == "linux-64"]
 {% set kernel_headers_version = "4.18.0" %}  # [cross_target_platform == "linux-aarch64"]
 {% set kernel_headers_version = "3.10.0" %}  # [cross_target_platform != "linux-aarch64"]
 {% set kernel_headers_version2 = "3.10.0-1160" %}  # [cross_target_platform == "linux-64" or cross_target_platform == "linux-ppc64le"]
