@@ -1,4 +1,4 @@
-{% set use_amazon_linux = "no" %}  # [cross_target_platform == "linux-aarch64"]
+{% set use_amazon_linux = "yes" %}  # [cross_target_platform == "linux-aarch64"]
 {% set use_amazon_linux = "no" %}  # [cross_target_platform != "linux-aarch64"]
 {% if use_amazon_linux == "yes" %}
 {% set distro = "amzn2" %}
