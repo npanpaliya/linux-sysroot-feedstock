@@ -105,14 +105,15 @@ source:
 
   - folder: binary-freebl
     no_hoist: True
-    url: {{ rpm_url }}/nss-softokn-freebl-3.44.0-8.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform != "linux-aarch64"]
+    url: {{ rpm_url }}/nss-softokn-freebl-3.44.0-8.{{ distro }}_7.{{ centos_machine }}.rpm  # [cross_target_platform != "linux-aarch64"]
   {% if use_amazon_linux == "yes" %}
     url: {{ rpm_url }}/nss-softokn-freebl-3.53.1-6.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64"]
+    sha256: 63e80621bce54904bcc01bcf651069e5e8d3deb89d649e45311da9de781798a8  # [cross_target_platform == "linux-aarch64"]
   {% else %}
-    url: {{ rpm_url }}/nss-softokn-freebl-3.44.0-8.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64"]
+    url: {{ rpm_url }}/nss-softokn-freebl-3.44.0-8.{{ distro }}_7.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64"]
+    sha256: 5a62051cc69e76ffa44291ed12464a3ce4a8224dbf829330739aae500f33b2b2  # [cross_target_platform == "linux-aarch64"]
   {% endif %}
     sha256: 9949831b67f6eb68dc9df6df3e4570bd5f9301de3c7d67c41512fcaaadb40da5  # [cross_target_platform == "linux-64"]
-    sha256: 5a62051cc69e76ffa44291ed12464a3ce4a8224dbf829330739aae500f33b2b2  # [cross_target_platform == "linux-aarch64"]
     sha256: 01439cbf4297a341e31b425961bdafc251a4765e22035977ca459c939f949899  # [cross_target_platform == "linux-ppc64le"]
     sha256: 8c88f6be69f0d88ac91a577cfb507c879446d3950a19843927082bf0d660accf  # [cross_target_platform == "linux-s390x"]
 
