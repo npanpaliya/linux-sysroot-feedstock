@@ -1,4 +1,8 @@
-use_amazon_linux: yes
+use_amazon_linux:
+  - no
+  - yes
+  - no
+  - no
 target_machine:
   - x86_64
   - aarch64
