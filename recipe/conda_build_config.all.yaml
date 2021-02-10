@@ -1,3 +1,4 @@
+use_amazon_linux: no
 target_machine:
   - x86_64
   - aarch64
