@@ -1,4 +1,8 @@
-use_amazon_linux: no
+use_amazon_linux:
+  - no
+  - oo
+  - no
+  - no
 target_machine:
   - x86_64
   - aarch64
@@ -30,3 +34,4 @@ zip_keys:
     - cross_target_platform
     - centos_machine
     - cdt_arch
+    - use_amazon_linux
