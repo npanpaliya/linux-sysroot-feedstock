@@ -16,7 +16,7 @@
 {% set kernel_headers_version2 = "3.10.0-1127" %}  # [cross_target_platform == "linux-s390x"]
 {% endif %}
 
-{% set build_number = "11" %}
+{% set build_number = "12" %}
 {% set rpm_url = "http://mirror.centos.org/centos/7.9.2009/os/x86_64/Packages" %}  # [cross_target_platform == "linux-64"]
 {% if use_amazon_linux == "yes" %}
 {% set rpm_url = "https://graviton-rpms.s3.amazonaws.com/amzn2-core_2021_01_26/amzn2-core" %}  # [cross_target_platform == "linux-aarch64"]
