@@ -1,0 +1,22 @@
+use_amazon_linux:
+  - yes
+target_machine:
+  - aarch64
+centos_machine:
+  - aarch64
+cross_target_platform:
+  - linux-aarch64
+cdt_arch:
+  - aarch64
+
+ctng_vendor:
+  - conda
+cdt_name:
+  - cos7
+
+zip_keys:
+  - - target_machine
+    - cross_target_platform
+    - centos_machine
+    - cdt_arch
+    - use_amazon_linux
