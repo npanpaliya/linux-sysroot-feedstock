@@ -11,8 +11,6 @@ cdt_arch:
 
 ctng_vendor:
   - conda
-cdt_name:
-  - cos7
 
 zip_keys:
   - - target_machine
