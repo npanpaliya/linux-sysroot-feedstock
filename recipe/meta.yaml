@@ -16,7 +16,7 @@
 {% set kernel_headers_version2 = "3.10.0-1127" %}  # [cross_target_platform == "linux-s390x"]
 {% endif %}
 
-{% set build_number = "12" %}
+{% set build_number = "14" %}
 {% set rpm_url = "http://mirror.centos.org/centos/7.9.2009/os/x86_64/Packages" %}  # [cross_target_platform == "linux-64"]
 {% if use_amazon_linux == "yes" %}
 {% set rpm_url = "https://graviton-rpms.s3.amazonaws.com/amzn2-core_2021_01_26/amzn2-core" %}  # [cross_target_platform == "linux-aarch64"]
@@ -43,6 +43,34 @@ source:
 {% endif %}
     sha256: f9ff840d0cd01cb900c5ae3a5ce0adb5d388be7a938dc83cdeb374d27fc0a68e  # [cross_target_platform == "linux-ppc64le"]
     sha256: c6ce1ac0472ec946cf7064e02caad113e4f348fdc1259161d5640dbdb295634b  # [cross_target_platform == "linux-s390x"]
+
+{% if use_amazon_linux == "yes" %}
+  # Amazon Linux split what's normally in just `glibc` across multiple packages
+  - folder: binary-glibc-locale-source
+    no_hoist: True
+    url: {{ rpm_url }}/glibc-locale-source-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: c777dadf0c4baff5aa76306308ad4c975094010260d9a710ccaf0f67f17c87de
+  - folder: binary-glibc-nss-devel
+    no_hoist: True
+    url: {{ rpm_url }}/glibc-nss-devel-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: d43d062b2cb12fc00bd7c3e16d54817c37867826c7f0a7c51bc08e1bcf929ff2
+  - folder: binary-libcrypt
+    no_hoist: True
+    url: {{ rpm_url }}/libcrypt-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: ea71214990064231d01ac4c1a3b8cea818f5f88b0e155c62fbc24f8ea3913fcf
+  - folder: binary-nss_db
+    no_hoist: True
+    url: {{ rpm_url }}/nss_db-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: 2a4cd1720c6c847a17b295f4b36520624aea23a3d5b0d02cbb4916018fef6cbc
+  - folder: binary-nss_hesiod
+    no_hoist: True
+    url: {{ rpm_url }}/nss_hesiod-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: c5b0e9aae44f3828483f0e62b2bac2debba829ced00cbaab822803abe39eadb4
+  - folder: binary-nss_nis
+    no_hoist: True
+    url: {{ rpm_url }}/nss_nis-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
+    sha256: 67ac8016123b9a2c1ebad1fd0764c46b1855c4b38834089070c6f82ec7937032
+{% endif %}
 
   - folder: binary-glibc-common
     no_hoist: True
