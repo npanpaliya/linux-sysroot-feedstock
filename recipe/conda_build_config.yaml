@@ -1,3 +1,8 @@
+use_amazon_linux:
+  - no
+  - yes
+  - no
+  - no
 target_machine:
   - x86_64
   - aarch64
@@ -18,14 +23,13 @@ cdt_arch:
   - aarch64
   - ppc64le
   - s390x
-
 ctng_vendor:
   - conda
 cdt_name:
   - cos7
-
 zip_keys:
   - - target_machine
     - cross_target_platform
     - centos_machine
     - cdt_arch
+    - use_amazon_linux
