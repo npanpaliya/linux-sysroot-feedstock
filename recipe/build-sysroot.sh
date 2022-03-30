@@ -9,7 +9,13 @@ AWSCOMPONENTS="glibc-locale-source glibc-nss-devel libcrypt nss_db nss_hesiod ns
 for std_component in $STDCOMPONENTS
   do
     mkdir -p "${SRC_DIR}/${std_component}_x"
-    tar -xvf "${SRC_DIR}/${std_component}" -C "${SRC_DIR}/${std_component}_x"
+    if [[ $(uname) == "Linux" ]]; then
+      pushd "${SRC_DIR}/${std_component}_x"
+      cpio -idmv <"${SRC_DIR}/${std_component}"
+      popd
+    else
+      tar -xvf "${SRC_DIR}/${std_component}" -C "${SRC_DIR}/${std_component}_x"
+    fi
   done
 
 # for amazone some additional packages are required for a working glibc ...
@@ -17,7 +23,13 @@ if [[ "$target_machine" == "aarch64" ]]; then
   for glib_component in $AWSCOMPONENTS
     do
       mkdir -p "${SRC_DIR}/binary-${glib_component}_x"
-      tar -xvf "${SRC_DIR}/binary-${glib_component}" -C "${SRC_DIR}/binary-${glib_component}_x"
+      if [[ $(uname) == "Linux" ]]; then
+        pushd "${SRC_DIR}/binary-${glib_component}_x"
+        cpio -idmv <"${SRC_DIR}/binary-${glib_component}"
+        popd
+      else
+        tar -xvf "${SRC_DIR}/binary-${glib_component}" -C "${SRC_DIR}/binary-${glib_component}_x"
+      fi
     done
 fi
 
