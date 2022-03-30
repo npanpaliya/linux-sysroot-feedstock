@@ -25,90 +25,59 @@ source:
   - folder: binary
     no_hoist: True
     path: rpms/glibc-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: 49eb081de1ddd13f5440abdbb3b42cdd01d11b74d624793ae1b80a1cf432551b  # [cross_target_platform == "linux-64"]
-    sha256: 951f9895db88e559f50bb8e7cfe98b1293d002dd4fed2fcab1b6de3c0ccd66fc  # [cross_target_platform == "linux-aarch64"]
-    sha256: f9ff840d0cd01cb900c5ae3a5ce0adb5d388be7a938dc83cdeb374d27fc0a68e  # [cross_target_platform == "linux-ppc64le"]
-    sha256: c6ce1ac0472ec946cf7064e02caad113e4f348fdc1259161d5640dbdb295634b  # [cross_target_platform == "linux-s390x"]
 
 {% if cross_target_platform == "linux-aarch64" %}
   # Amazon Linux split what's normally in just `glibc` across multiple packages
   - folder: binary-glibc-locale-source
     no_hoist: True
     path: rpms/glibc-locale-source-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: c777dadf0c4baff5aa76306308ad4c975094010260d9a710ccaf0f67f17c87de
   - folder: binary-glibc-nss-devel
     no_hoist: True
     path: rpms/glibc-nss-devel-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: d43d062b2cb12fc00bd7c3e16d54817c37867826c7f0a7c51bc08e1bcf929ff2
   - folder: binary-libcrypt
     no_hoist: True
     path: rpms/libcrypt-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: ea71214990064231d01ac4c1a3b8cea818f5f88b0e155c62fbc24f8ea3913fcf
   - folder: binary-nss_db
     no_hoist: True
     path: rpms/nss_db-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: 2a4cd1720c6c847a17b295f4b36520624aea23a3d5b0d02cbb4916018fef6cbc
   - folder: binary-nss_hesiod
     no_hoist: True
     path: rpms/nss_hesiod-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: c5b0e9aae44f3828483f0e62b2bac2debba829ced00cbaab822803abe39eadb4
   - folder: binary-nss_nis
     no_hoist: True
     path: rpms/nss_nis-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: 67ac8016123b9a2c1ebad1fd0764c46b1855c4b38834089070c6f82ec7937032
 {% endif %}
 
   - folder: binary-glibc-common
     no_hoist: True
     path: rpms/glibc-common-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: e89e472b20c02c25fd69047abc7a0e7e3b1deeb4d5b88b17886318c8af8439d7  # [cross_target_platform == "linux-64"]
-    sha256: 5e9701f9b79a906493f665fd29a92f2220ea85a7b30a7653c217c2c7a88072d7  # [cross_target_platform == "linux-aarch64"]
-    sha256: b83d663f9822828bd52282c0e43523a266ad3646d76108e4e3a32e7cf25ac658  # [cross_target_platform == "linux-ppc64le"]
-    sha256: e6a3796bf72bd92f31d7aefe0096009bfa8ab592e143362c3c1b73c2129f7bb3  # [cross_target_platform == "linux-s390x"]
 
   - folder: binary-glibc-devel
     no_hoist: True
     path: rpms/glibc-devel-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: 57e04523b12c9aa5a0632cbfa2ff13e33f1ecec5e6bd0b609a77d9c24cebf8c4  # [cross_target_platform == "linux-64"]
-    sha256: b4b3c888c9b11510a477d00b36c91d031d2da916bf5fa8f459088a16df2e22d3  # [cross_target_platform == "linux-aarch64"]
-    sha256: 915b115a348dd14bad459287601bbd4c963c5e06d01217aafd343b7d3cccc10c  # [cross_target_platform == "linux-ppc64le"]
-    sha256: 1f46ff3924c3d55de7647366a06653db791fe528b06a0be1b3ddd0bea91b752e  # [cross_target_platform == "linux-s390x"]
 
   - folder: binary-tzdata
     no_hoist: True
     path: rpms/tzdata-2019c-1.el7.noarch.rpm
-    sha256: bc5c790c0a346bb20abbbd866e0c1cf664cec9c3e4d4e21dbfe32b32616257ba
 
   - folder: binary-glibc-headers
     no_hoist: True
     path: rpms/glibc-headers-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: b7e4e19b362cbd73e09e6ee5eff3d70dbeb7cc2c702a927b8f646f324d4ec4a3  # [cross_target_platform == "linux-64"]
-    sha256: a89dc81eda7019fede38bea0145459ed744e609188bc3261bfc8f3a937c26633  # [cross_target_platform == "linux-aarch64"]
-    sha256: e1b7daaccec1eafa1fb7ead6c4c81bf9390b2b849e96e1d2498e1352c0254a67  # [cross_target_platform == "linux-ppc64le"]
-    sha256: 034e49d09f864c3afcf007a991da5c89ee2106ebeb3bdcf8aca61fc4f5ad916d  # [cross_target_platform == "linux-s390x"]
 
   - folder: binary-kernel-headers
     no_hoist: True
     path: rpms/kernel-headers-{{ kernel_headers_version2 }}.{{ distro }}.{{ centos_machine }}.rpm
-    sha256: 81b4e4f401d2402736ceba4627eaafd5b615c2cc45aa4d4f941ea79562045139  # [cross_target_platform == "linux-64"]
-    sha256: 6dc942a32dae8a2a4579de2140741a8caaa7bbbac04e83f0b1226bb9ca909e91  # [cross_target_platform == "linux-aarch64"]
-    sha256: 6875ad8dbbf0cff85bf39bd2446ffb9e92de78e113496fba37fa5da9f10348b1  # [cross_target_platform == "linux-ppc64le"]
-    sha256: b4bd26bbccab8028d903d250a7e599f77c7c5ea8b7137f96aecf998016799d93  # [cross_target_platform == "linux-s390x"]
 
   - folder: binary-freebl
     no_hoist: True
     path: rpms/nss-softokn-freebl-3.44.0-8.{{ distro }}_7.{{ centos_machine }}.rpm  # [cross_target_platform != "linux-aarch64"]
     path: rpms/nss-softokn-freebl-3.53.1-6.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64"]
-    sha256: 63e80621bce54904bcc01bcf651069e5e8d3deb89d649e45311da9de781798a8  # [cross_target_platform == "linux-aarch64"]
-    sha256: 9949831b67f6eb68dc9df6df3e4570bd5f9301de3c7d67c41512fcaaadb40da5  # [cross_target_platform == "linux-64"]
-    sha256: 01439cbf4297a341e31b425961bdafc251a4765e22035977ca459c939f949899  # [cross_target_platform == "linux-ppc64le"]
-    sha256: 8c88f6be69f0d88ac91a577cfb507c879446d3950a19843927082bf0d660accf  # [cross_target_platform == "linux-s390x"]
 
 build:
   number: {{ build_number }}
   noarch: generic
   missing_dso_whitelist:
-    - '**/*'
+    - '*'
   # building it on one architecture is fine enough
   skip: True  # [not (linux and x86_64)]
 
@@ -121,7 +90,7 @@ outputs:
       binary_relocation: False
       detect_binary_files_with_prefix: False
       missing_dso_whitelist:
-        - '**/*'
+        - '*'
     requirements:
 {% if cross_target_platform == "linux-64" %}
       run:
@@ -139,7 +108,7 @@ outputs:
     build:
       noarch: generic
       missing_dso_whitelist:
-        - '**/*'
+        - '*'
     test:
       commands:
         - echo "works!"
@@ -149,7 +118,7 @@ outputs:
     build:
       noarch: generic
       missing_dso_whitelist:
-        - '**/*'
+        - '*'
       binary_relocation: False
       detect_binary_files_with_prefix: False
 {% if cross_target_platform == "linux-64" %}
@@ -181,7 +150,7 @@ outputs:
     build:
       noarch: generic
       missing_dso_whitelist:
-        - '**/*'
+        - '*'
     requirements:
       run:
         - sysroot_{{ cross_target_platform }} =={{ version }}
