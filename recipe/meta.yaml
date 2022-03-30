@@ -108,7 +108,7 @@ build:
   number: {{ build_number }}
   noarch: generic
   missing_dso_whitelist:
-    - '*'
+    - '**/*'
   # building it on one architecture is fine enough
   skip: True  # [not (linux and x86_64)]
 
@@ -120,6 +120,8 @@ outputs:
       noarch: generic
       binary_relocation: False
       detect_binary_files_with_prefix: False
+      missing_dso_whitelist:
+        - '**/*'
     requirements:
 {% if cross_target_platform == "linux-64" %}
       run:
@@ -136,6 +138,8 @@ outputs:
     version: 3
     build:
       noarch: generic
+      missing_dso_whitelist:
+        - '**/*'
     test:
       commands:
         - echo "works!"
@@ -144,6 +148,8 @@ outputs:
     script: build-sysroot.sh
     build:
       noarch: generic
+      missing_dso_whitelist:
+        - '**/*'
       binary_relocation: False
       detect_binary_files_with_prefix: False
 {% if cross_target_platform == "linux-64" %}
@@ -174,6 +180,8 @@ outputs:
   - name: sysroot-{{ cdt_name }}-{{ cdt_arch }}
     build:
       noarch: generic
+      missing_dso_whitelist:
+        - '**/*'
     requirements:
       run:
         - sysroot_{{ cross_target_platform }} =={{ version }}
