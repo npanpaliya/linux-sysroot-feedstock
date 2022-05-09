@@ -6,6 +6,10 @@ set -x
 STDCOMPONENTS="binary binary-freebl binary-tzdata binary-glibc-headers binary-glibc-common binary-glibc-devel"
 AWSCOMPONENTS="glibc-locale-source glibc-nss-devel libcrypt nss_db nss_hesiod nss_nis"
 
+if [[ "$use_amazon_linux" != "yes" ]]; then
+  AWSCOMPONENTS=""
+fi
+
 for std_component in $STDCOMPONENTS
   do
     mkdir -p "${SRC_DIR}/${std_component}_x"

@@ -1,4 +1,4 @@
-{% if cross_target_platform == "linux-aarch64" %}
+{% if cross_target_platform == "linux-aarch64" and use_amazon_linux == "yes" %}
 {% set distro = "amzn2" %}
 {% set version = "2.26" %}
 {% set version2 = "2.26-39" %}
@@ -10,9 +10,10 @@
 {% set version2 = "2.17-317" %}  # [cross_target_platform == "linux-s390x" or cross_target_platform == "linux-ppc64le"]
 {% set version2 = "2.17-307" %}  # [cross_target_platform != "linux-s390x" and cross_target_platform != "linux-ppc64le"]
 {% set kernel_headers_version = "3.10.0" %}  # [cross_target_platform != "linux-aarch64"]
+{% set kernel_headers_version = "4.18.0" %}  # [cross_target_platform == "linux-aarch64"]
 {% set kernel_headers_version2 = "3.10.0-1127" %}  # [cross_target_platform == "linux-64"]
-{% set kernel_headers_version2 = "4.18.0-193.28.1" %}  # [cross_target_platform == "linux-aarch64"]
-{% set kernel_headers_version2 = "3.10.0-1160" %}  # [cross_target_platform != "linux-64"]
+{% set kernel_headers_version2 = "4.18.0-147.8.1" %}  # [cross_target_platform == "linux-aarch64"]
+{% set kernel_headers_version2 = "3.10.0-1160" %}  # [cross_target_platform != "linux-64" and cross_target_platform != "linux-aarch64"]
 {% endif %}
 
 {% set build_number = "15" %}
@@ -26,7 +27,7 @@ source:
     no_hoist: True
     path: rpms/glibc-{{ version2 }}.{{ distro }}.{{ centos_machine }}.rpm
 
-{% if cross_target_platform == "linux-aarch64" %}
+{% if cross_target_platform == "linux-aarch64" and use_amazon_linux == "yes" %}
   # Amazon Linux split what's normally in just `glibc` across multiple packages
   - folder: binary-glibc-locale-source
     no_hoist: True
@@ -70,8 +71,8 @@ source:
 
   - folder: binary-freebl
     no_hoist: True
-    path: rpms/nss-softokn-freebl-3.44.0-8.{{ distro }}_7.{{ centos_machine }}.rpm  # [cross_target_platform != "linux-aarch64"]
-    path: rpms/nss-softokn-freebl-3.53.1-6.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64"]
+    path: rpms/nss-softokn-freebl-3.44.0-8.{{ distro }}_7.{{ centos_machine }}.rpm  # [cross_target_platform != "linux-aarch64" or use_amazon_linux != "yes"]
+    path: rpms/nss-softokn-freebl-3.53.1-6.{{ distro }}.{{ centos_machine }}.rpm  # [cross_target_platform == "linux-aarch64" and use_amazon_linux == "yes"]
 
 build:
   number: {{ build_number }}
@@ -79,7 +80,7 @@ build:
   missing_dso_whitelist:
     - '*'
   # building it on one architecture is fine enough
-  skip: True  # [not (linux and x86_64)]
+  skip: True  # [not (osx and x86_64 and cross_target_platform == "linux-aarch64" and use_amazon_linux != "yes")]
 
 outputs:
   - name: kernel-headers_{{ cross_target_platform }}

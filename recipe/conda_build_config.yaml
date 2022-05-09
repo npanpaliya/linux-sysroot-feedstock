@@ -3,23 +3,28 @@ use_amazon_linux:
   - yes
   - no
   - no
+  - no
 target_machine:
   - x86_64
+  - aarch64
   - aarch64
   - powerpc64le
   - s390x
 centos_machine:
   - x86_64
   - aarch64
+  - aarch64
   - ppc64le
   - s390x
 cross_target_platform:
   - linux-64
   - linux-aarch64
+  - linux-aarch64
   - linux-ppc64le
   - linux-s390x
 cdt_arch:
   - x86_64
+  - aarch64
   - aarch64
   - ppc64le
   - s390x
