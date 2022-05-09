@@ -83,7 +83,9 @@ ln -s $PWD/lib64 $PWD/lib
 cp "${SRC_DIR}"/binary-freebl_x/usr/lib64/libfreebl3.so ${PWD}/usr/lib64/.
 
 if [[ "$target_machine" == "aarch64" ]]; then
-  ln -s $PWD/lib64/libcrypt-2.26.so $PWD/lib64/libcrypt.so.1
+  if [[ "$use_amazon_linux" == "yes" ]]; then
+    ln -s $PWD/lib64/libcrypt-2.26.so $PWD/lib64/libcrypt.so.1
+  fi
 fi
 
 popd
