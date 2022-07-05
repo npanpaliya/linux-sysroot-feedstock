@@ -32,6 +32,10 @@ source:
     url: https://rpmfind.net/linux/centos/8-stream/BaseOS/ppc64le/os/Packages/kernel-headers-4.18.0-394.el8.ppc64le.rpm  # [ppc64le]
     sha256: bd5ec8f6882853c7f54c82eb1ed0e145ed7f372abf07c2635f266da837c2e57e  #[ppc64le]
 
+  - folder: binary-libxcrypt
+    url: https://rpmfind.net/linux/centos/8-stream/BaseOS/ppc64le/os/Packages/libxcrypt-devel-4.1.1-6.el8.ppc64le.rpm
+    sha256: 204abe2a0ce05c7198c1f3de76507078ca9e1878ecfa3f8294775d57b096263a
+ 
   - folder: binary-freebl
     url: https://rpmfind.net/linux/centos/8-stream/AppStream/ppc64le/os/Packages/nss-softokn-freebl-3.53.1-17.el8_3.ppc64le.rpm
     sha256: 4f71990b6f65b7cdeed7d2c6aa49b59d0af03f67694b5dd6cf32ea1be3896bc9  # [ppc64le]
@@ -95,8 +99,8 @@ outputs:
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/sbin/ldconfig
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/lib/crt1.o
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/include/limits.h
-        - test -d $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/share/locale
-        - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/bin/ldd
+        - test -d $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/share/zoneinfo
+        - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/bin/ldd
         - test -f $PREFIX/{{ target_machine }}-{{ ctng_vendor }}-linux-gnu/sysroot/lib/libc.so.6
 
   - name: sysroot-{{ cdt_name }}-{{ cdt_arch }}
@@ -111,8 +115,8 @@ outputs:
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/sbin/ldconfig
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/lib/crt1.o
         - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/include/limits.h
-        - test -d $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/share/locale
-        - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/bin/ldd
+        - test -d $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/usr/share/zoneinfo
+        - test -f $PREFIX/{{ target_machine }}-conda-linux-gnu/sysroot/bin/ldd
         - test -f $PREFIX/{{ target_machine }}-{{ ctng_vendor }}-linux-gnu/sysroot/lib/libc.so.6
 
 about:
